@@ -38,18 +38,18 @@ return {
             },
           },
         },
-        pyright = {
-          settings = {
-            python = {
-              analysis = {
-                typeCheckingMode = "off",
-                diagnosticMode = "openFilesOnly",
-                autoImportCompletions = true,
-                useLibraryCodeForTypes = true,
-              },
-            },
-          },
-        },
+        -- pyright = {
+        --   settings = {
+        --     python = {
+        --       analysis = {
+        --         typeCheckingMode = "off",
+        --         diagnosticMode = "openFilesOnly",
+        --         autoImportCompletions = true,
+        --         useLibraryCodeForTypes = true,
+        --       },
+        --     },
+        --   },
+        -- },
         rust_analyzer = {},
         tailwindcss = {},
         html = {
@@ -101,6 +101,20 @@ return {
         ensure_installed = ensure_installed_tools,
       }
 
+      vim.lsp.config("ty", {
+        cmd = { "ty", "lsp", "server" },
+        root_markers = { ".git", "pyproject.toml", "ty.toml" },
+        capabilities = capabilities,
+        settings = {
+          ty = {
+            configuration = {
+              rules = { ["unresolved-reference"] = "warn" },
+            },
+          },
+        },
+      })
+      -- Force enable ty for Python files
+      vim.lsp.enable "ty"
       -- LSP Attach Auto Commands
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("lsp-attach-config", { clear = true }),

@@ -82,3 +82,55 @@ vim.keymap.set("n", "<leader>rp", function()
   path = path:gsub("/", ".") -- Replace / with .
   vim.fn.setreg("+", path) -- Yank to system clipboard (optional)
 end, { desc = "Yank relative dot-path for python", noremap = true, silent = true })
+
+-- Yank `import <module>`
+vim.keymap.set("n", "<leader>ri", function()
+  local path = vim.fn.expand "%:~:."
+  path = path:gsub("%.py$", "")
+  path = path:gsub("/", ".")
+  local import_stmt = "import " .. path
+  vim.fn.setreg("+", import_stmt)
+  print("Copied: " .. import_stmt)
+end, { desc = "Yank import <module>", noremap = true, silent = true })
+
+-- Yank `from <module> import *`
+vim.keymap.set("n", "<leader>ra", function()
+  local path = vim.fn.expand "%:~:."
+  path = path:gsub("%.py$", "")
+  path = path:gsub("/", ".")
+  local import_stmt = "from " .. path .. " import *"
+  vim.fn.setreg("+", import_stmt)
+  print("Copied: " .. import_stmt)
+end, { desc = "Yank from <module> import *", noremap = true, silent = true })
+
+-- Yank `from <parent> import <child>`
+vim.keymap.set("n", "<leader>rf", function()
+  local path = vim.fn.expand "%:~:."
+  path = path:gsub("%.py$", "")
+  path = path:gsub("/", ".")
+  local parent, child = path:match "(.+)%.([^.]+)$"
+  local import_stmt = parent and ("from " .. parent .. " import " .. child) or ("import " .. path)
+  vim.fn.setreg("+", import_stmt)
+  print("Copied: " .. import_stmt)
+end, { desc = "Yank from <parent> import <child>", noremap = true, silent = true })
+
+-- Absolute path
+vim.keymap.set("n", "<leader>pa", function()
+  local p = vim.fn.expand "%:p"
+  vim.fn.setreg("+", p)
+  print("Abs path copied: " .. p)
+end, { desc = "Copy absolute file path" })
+
+-- Relative path
+vim.keymap.set("n", "<leader>pr", function()
+  local p = vim.fn.expand "%"
+  vim.fn.setreg("+", p)
+  print("Rel path copied: " .. p)
+end, { desc = "Copy relative file path" })
+
+-- Filename only (no extension)
+vim.keymap.set("n", "<leader>pn", function()
+  local p = vim.fn.expand "%:t:r"
+  vim.fn.setreg("+", p)
+  print("Filename copied: " .. p)
+end, { desc = "Copy filename (no ext)" })

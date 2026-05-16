@@ -1,27 +1,31 @@
 return {
-  'numToStr/Comment.nvim',
-  event = 'BufReadPost',
+  "numToStr/Comment.nvim",
+  -- We use the dependencies to fix the Treesitter context issue
+  dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
-    require('Comment').setup {
-      pre_hook = function(ctx)
-        -- Adjust comments for filetypes (example: treesitter context for Rust)
-        if vim.bo.filetype == 'rust' then
-          return require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()(ctx)
-        end
-      end,
+    -- 1. Setup the context string plugin (required for Nvim 0.12+)
+    require("ts_context_commentstring").setup {
+      enable_autocmd = false,
     }
 
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<C-_>', require('Comment.api').toggle.linewise.current, opts)
-    vim.keymap.set('n', '<C-c>', require('Comment.api').toggle.linewise.current, opts)
-    vim.keymap.set('n', '<C-/>', require('Comment.api').toggle.linewise.current, opts)
-    vim.keymap.set('v', '<C-_>', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
-    vim.keymap.set('v', '<C-c>', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
-    vim.keymap.set('v', '<C-/>', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
+    -- 2. Setup Comment.nvim with a safe check for the parser
+    require("Comment").setup {
+      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    }
 
-    -- Block comment toggling
-    vim.keymap.set('n', '<C-B>', require('Comment.api').toggle.blockwise.current, opts)
-    vim.keymap.set('v', '<C-B>', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<cr>", opts)
+    -- 3. Fix: Neovim 0.12 sends <C-_> for <C-/> in most terminals
+    local api = require "Comment.api"
+    local opts = { noremap = true, silent = true }
+
+    -- Normal Mode
+    vim.keymap.set("n", "<C-_>", api.toggle.linewise.current, opts)
+    vim.keymap.set("n", "<C-/>", api.toggle.linewise.current, opts)
+
+    -- Visual Mode
+    vim.keymap.set("v", "<C-_>", function()
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "nx", false)
+      api.toggle.linewise(vim.fn.visualmode())
+    end, opts)
   end,
 }
-

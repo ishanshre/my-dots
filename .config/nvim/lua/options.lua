@@ -82,3 +82,47 @@ vim.opt.background = "dark"
 --   severity_sort = true,
 -- }
 --
+
+-- Neovide specific configurations
+if vim.g.neovide then
+  -- Font configuration
+  vim.opt.guifont = "ComicShannsMono Nerd Font:h11" -- Adjust font and size as needed
+
+  -- Scaling
+  vim.g.neovide_scale_factor = 1.0
+  local change_scale_factor = function(delta)
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+  end
+  vim.keymap.set("n", "<C-=>", function()
+    change_scale_factor(1.10)
+  end)
+  vim.keymap.set("n", "<C-->", function()
+    change_scale_factor(1 / 1.10)
+  end)
+
+  -- Copy/paste from system clipboard specifically for Neovide GUI
+  vim.keymap.set({'n', 'v'}, '<C-S-c>', '"+y', { noremap = true, silent = true })
+  vim.keymap.set({'n', 'v'}, '<C-S-v>', '"+p', { noremap = true, silent = true })
+  vim.keymap.set('i', '<C-S-v>', '<C-r>+', { noremap = true, silent = true })
+  vim.keymap.set('c', '<C-S-v>', '<C-r>+', { noremap = true, silent = true })
+  vim.keymap.set('t', '<C-S-v>', '<C-\\><C-n>"+pi', { noremap = true, silent = true })
+
+  -- Allow normal <C-v> to still be block visual mode, but if user wants GUI standard:
+  vim.keymap.set('n', '<C-v>', '"+p', { noremap = true, silent = true })
+  vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true })
+  vim.keymap.set('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+  vim.keymap.set('c', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+  vim.keymap.set('t', '<C-v>', '<C-\\><C-n>"+pi', { noremap = true, silent = true })
+
+
+  -- Window settings
+  -- vim.g.neovide_opacity = 0.95
+  vim.g.neovide_hide_mouse_when_typing = true
+
+  -- Cursor settings
+  vim.g.neovide_cursor_animation_length = 0.13
+  vim.g.neovide_cursor_trail_size = 0.8
+
+  -- Fix terminal colors for apps like yazi running inside Neovide terminal
+  vim.env.COLORTERM = "truecolor"
+end

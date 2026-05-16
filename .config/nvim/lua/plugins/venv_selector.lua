@@ -15,45 +15,41 @@
 --
 --
 
-
-
 return {
   {
-    'linux-cultist/venv-selector.nvim',
-    dependencies = { 
-      'neovim/nvim-lspconfig', 
-      { 'nvim-telescope/telescope.nvim', lazy = true }, -- Load Telescope lazily
-      'mfussenegger/nvim-dap-python',
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      { "nvim-telescope/telescope.nvim", lazy = true }, -- Load Telescope lazily
+      "mfussenegger/nvim-dap-python",
     },
-    branch = "regexp",
     config = function()
-      require('venv-selector').setup({
+      require("venv-selector").setup {
         -- Your configuration options
-      })
+      }
     end,
-    event = 'VeryLazy',
+    event = "VeryLazy",
     keys = {
-      { '<leader>vs', '<cmd>VenvSelect<cr>' },
-      { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+      { "<leader>vs", "<cmd>VenvSelect<cr>" },
+      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
     },
   },
   -- Add Telescope but restrict its usage
   {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     lazy = true, -- Ensure Telescope is loaded only when needed
     config = function()
-      require('telescope').setup({
+      require("telescope").setup {
         defaults = {
           -- Minimal configuration for venv-selector
           mappings = {
-            i = { ['<Esc>'] = require('telescope.actions').close },
+            i = { ["<Esc>"] = require("telescope.actions").close },
           },
         },
-      })
+      }
     end,
   },
 }
-
 
 -- return {
 --     {
@@ -87,4 +83,3 @@ return {
 --         },
 --     },
 -- }
-
