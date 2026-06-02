@@ -1,0 +1,36 @@
+
+[font]
+size = 11.0
+
+[font.bold]
+family = "Comic Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Comic Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Comic Mono"
+style = "Italic"
+
+[font.normal]
+family = "Comic Mono"
+style = "Regular"
+
+[window]
+padding = { x = 0, y = 0 }
+dynamic_padding = true
+decorations = "None"
+blur = true
+
+[general]
+# import = ["~/.config/alacritty/cyberdream.toml"]
+# import = ["~/.config/alacritty/dracula.toml"]
+import = ["~/.config/alacritty/catppuccin.toml"]
+
+
+[keyboard]
+bindings = [{key = 'x', mods = "Alt", action = "None"}]
+
+

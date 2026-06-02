@@ -1,0 +1,66 @@
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	font-family: "FiraCode Nerd Font", monospace;
+	font-size: 14pt;
+	font-weight: bold;
+	color: #cdd6f4;
+	background-color: rgba(17, 17, 27, 0.85);
+	/* Deep translucent dark */
+}
+
+button {
+	border-radius: 20px;
+	border-color: black;
+	text-decoration-color: #cdd6f4;
+	color: #cdd6f4;
+	background-color: rgba(30, 30, 46, 0.5);
+	border-style: solid;
+	border-width: 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20%;
+	margin: 15px;
+	transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+button:focus,
+button:active,
+button:hover {
+	background-color: rgba(49, 50, 68, 0.9);
+	border-color: #f38ba8;
+	box-shadow: 0 0 15px 3px rgba(243, 139, 168, 0.4);
+	/* Glowing neon accent */
+	outline-style: none;
+}
+
+/* 
+  These pull the default wlogout icons. 
+  If they don't load on CachyOS, verify your icon path is /usr/share/wlogout/icons/
+*/
+#lock {
+	background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+	background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+	background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+	background-image: image(url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+	background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+	background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}

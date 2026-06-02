@@ -1,0 +1,56 @@
+[colors.primary]
+background = "#1E1E2E"  # Catppuccin Mocha
+foreground = "#D9E0EE"  # Catppuccin Mocha
+bright_foreground = "#FFFFFF"  # Bright white
+
+[colors.cursor]
+text = "#1E1E2E"  # Background color
+cursor = "#D9E0EE"  # Foreground color
+
+[colors.vi_mode_cursor]
+text = "#1E1E2E"  # Background color
+cursor = "#D9E0EE"  # Foreground color
+
+[colors.selection]
+text = "#D9E0EE"  # Selected text color
+background = "#4C4F69"  # Selection background
+
+[colors.normal]
+black = "#1E1E2E"  # Black
+red = "#F38BA8"    # Red
+green = "#A6E3A1"  # Green
+yellow = "#F9E2AF"  # Yellow
+blue = "#94E2D5"   # Blue
+magenta = "#F5C2E7"  # Magenta
+cyan = "#89DCEB"   # Cyan
+white = "#D9E0EE"  # White
+
+[colors.bright]
+black = "#B7BACF"  # Bright Black
+red = "#F38BA8"    # Bright Red
+green = "#A6E3A1"  # Bright Green
+yellow = "#F9E2AF"  # Bright Yellow
+blue = "#94E2D5"   # Bright Blue
+magenta = "#F5C2E7"  # Bright Magenta
+cyan = "#89DCEB"   # Bright Cyan
+white = "#FFFFFF"  # Bright White
+
+[colors.search.matches]
+foreground = "#1E1E2E"  # Match text
+background = "#A6E3A1"  # Match background
+
+[colors.search.focused_match]
+foreground = "#1E1E2E"  # Focused match text
+background = "#F9E2AF"  # Focused match background
+
+[colors.footer_bar]
+background = "#1E1E2E"  # Footer bar background
+foreground = "#D9E0EE"  # Footer bar text
+
+[colors.hints.start]
+foreground = "#1E1E2E"  # Hint start foreground
+background = "#F9E2AF"  # Hint start background
+
+[colors.hints.end]
+foreground = "#F9E2AF"  # Hint end foreground
+background = "#1E1E2E"  # Hint end background

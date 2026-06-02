@@ -1,0 +1,53 @@
+[general]
+font-sans = "ComicShannsMono Nerd Font"
+font-mono = "ComicShannsMono Nerd Font Mono"
+
+[bar]
+scale = 0.550000011920929
+module-gap = 1.5
+bg = "transparent"
+background-opacity = 52
+rounding = "md"
+button-label-size = 1.2999999523162842
+button-label-padding = 0.800000011920929
+button-rounding = "md"
+button-gap = 1.0499999523162842
+
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "media",
+    "mango-workspaces",
+    "cpu",
+    "ram",
+]
+center = ["clock"]
+right = [
+    "notifications",
+    "battery",
+    "bluetooth",
+    "network",
+    "microphone",
+    "volume",
+    "power",
+]
+
+[styling]
+theming-monitor = "HDMI-A-1"
+matugen-scheme = "vibrant"
+
+[styling.palette]
+bg = "#11111b"
+surface = "#181825"
+elevated = "#1e1e2e"
+fg = "#cdd6f4"
+fg-muted = "#bac2de"
+primary = "#b4befe"
+red = "#f38ba8"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+blue = "#74c7ec"
+
+[modules.power]
+left-click = "wlogout"
