@@ -1,0 +1,33 @@
+[colors.primary]
+background = "#2a2438"   # soft dark purple
+foreground = "#c7bfd8"   # muted light lavender
+
+[colors.cursor]
+text   = "#2a2438"
+cursor = "#8b7aa8"       # medium lilac
+
+[colors.selection]
+text   = "#2a2438"
+background = "#4c4159"
+
+
+
+[colors.normal]
+black   = "#2a2438"  # same as background
+red     = "#a06a78"
+green   = "#7b8e6e"
+yellow  = "#b69b72"
+blue    = "#7c6da6"
+magenta = "#8b7aa8"
+cyan    = "#6b8898"
+white   = "#c7bfd8"
+
+[colors.bright]
+black   = "#3a3147"
+red     = "#b37a89"
+green   = "#8fa082"
+yellow  = "#c5aa85"
+blue    = "#8f80b8"
+magenta = "#9c8bc4"
+cyan    = "#7c9bb0"
+white   = "#e6e0f0"

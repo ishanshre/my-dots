@@ -1,0 +1,57 @@
+
+[colors.primary]
+background = "#FAFAFA"  # Very light background
+foreground = "#1A1A1A"  # Strong dark text
+bright_foreground = "#000000"
+
+[colors.cursor]
+text = "#FAFAFA"
+cursor = "#1A1A1A"
+
+[colors.vi_mode_cursor]
+text = "#FAFAFA"
+cursor = "#1A1A1A"
+
+[colors.selection]
+text = "#000000"
+background = "#D0D7FF"  # Light blue selection
+
+[colors.normal]
+black = "#1A1A1A"
+red = "#D20F39"
+green = "#2E7D32"
+yellow = "#B58900"
+blue = "#1565C0"
+magenta = "#9C27B0"
+cyan = "#00838F"
+white = "#666666"
+
+[colors.bright]
+black = "#4A4A4A"
+red = "#C62828"
+green = "#1B5E20"
+yellow = "#9A7D00"
+blue = "#0D47A1"
+magenta = "#6A1B9A"
+cyan = "#006064"
+white = "#000000"
+
+[colors.search.matches]
+foreground = "#000000"
+background = "#FFE082"
+
+[colors.search.focused_match]
+foreground = "#000000"
+background = "#FFD54F"
+
+[colors.footer_bar]
+background = "#EEEEEE"
+foreground = "#000000"
+
+[colors.hints.start]
+foreground = "#000000"
+background = "#FFD54F"
+
+[colors.hints.end]
+foreground = "#FFD54F"
+background = "#FAFAFA"
